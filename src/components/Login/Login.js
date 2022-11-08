@@ -17,8 +17,9 @@ function Login(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const email = event.target.form.email.value;
-    const pass = event.target.form.password.value;
+    const email = event.target[0].value;
+    const pass = event.target[1].value;
+    console.log(email,pass);
     const message = tryLogin(email, pass, props.location.aboutProps.setUserData);   
   };
 
@@ -32,7 +33,7 @@ function Login(props) {
                 <div className="tab-content">
                   <div className="tab-pane fade in" id="login">
                     <h2 className="text-uppercase text-center"> Log in</h2>
-                    <form id="login" onClick={handleSubmit} >
+                    <form id="login" onSubmit={handleSubmit} >
                       <div className="form-group">
                         <label> Your Email<span className="req">*</span> </label>
                         <input type="email" className="form-control" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off" />
